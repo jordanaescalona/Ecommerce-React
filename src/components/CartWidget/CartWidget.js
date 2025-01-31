@@ -1,14 +1,23 @@
-import cart from "./assets/cart.png";
+//import cart from "./assets/cart.png";
 
+import { useContext } from "react";
+import { CartContext } from "../../context/CartContext";
+import { Link } from "react-router-dom";
+
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
+import { faShoppingCart } from "@fortawesome/free-solid-svg-icons";
 
 const CartWidget = () => {
+    const { totalQuantity } = useContext(CartContext);
+
     return (
         <div className="has-text-link">
-            <img src={cart} alt="cart-widget" style={{ width: "50px" }}  />
-            0
+            <Link to="/cart" style={{ display: totalQuantity > 0 ? "block" : "none" }}>
+                <FontAwesomeIcon icon={faShoppingCart} size="lg" />
+                {totalQuantity}
+            </Link>
         </div>
-
     );
-}
+};
 
 export default CartWidget; 

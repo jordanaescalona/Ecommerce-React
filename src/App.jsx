@@ -6,21 +6,30 @@ import ItemDetailContainer from "./components/ItemDetailContainer/ItemDetailCont
 import "bulma/css/bulma.css";
 //react-router-dom
 import { BrowserRouter,Routes,Route } from "react-router-dom";
-
+//importamos contexto del carrito de compras
+import { CartProvider } from "./context/CartContext";
+//importamos componente de cart
+import Cart from "./components/Cart/Cart";
+/* Checkout */
+import Checkout from "./components/Checkout/Checkout";
 
 function App(){
     return(
     
-        <div className="container has-text-centered">
+        <div className="container">
             
             <BrowserRouter>
-                <NavBar />
-                <Routes>
-                    <Route path="/" element={<ItemListContainer greeting={"Bienvenidos"}/>}/>
-                    <Route path="/category/:categoryId" element={<ItemListContainer/>} />
-                    <Route path="/item/:itemId" element={<ItemDetailContainer />} />`
-                    <Route path="*" element={<h1>404 NOT FOUND</h1>} />
-                </Routes>
+                <CartProvider>
+                    <NavBar />
+                    <Routes>
+                        <Route path="/" element={<ItemListContainer greeting={"Bienvenidos!!!"}/>}/>
+                        <Route path="/category/:categoryId" element={<ItemListContainer/>} />
+                        <Route path="/item/:itemId" element={<ItemDetailContainer />} />
+                        <Route path="/cart" element={<Cart />} />
+                        <Route path="/checkout" element={<Checkout/>}/>
+                        <Route path="*" element={<h1>404 NOT FOUND</h1>} />
+                    </Routes>   
+                </CartProvider>
             </BrowserRouter>           
         </div>
     );

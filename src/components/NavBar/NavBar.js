@@ -1,20 +1,28 @@
 import CartWidget from "../CartWidget/CartWidget";
-import { NavLink,Link } from "react-router-dom";
+import { NavLink, Link } from "react-router-dom";
 
-const NavBar = () =>{
+/* fontawesome */
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faHome } from '@fortawesome/free-solid-svg-icons';
+
+const NavBar = () => {
     return (
-        <nav className="container mt-4">
+        <nav className="container my-5">
             <Link to="/">
-                <h3 className="title has-text-danger p-5">Jordana Escalona Ecommerce</h3>
-            </Link>            
-            <div>
-                <NavLink to={`/category/celular`} className={({isActive}) => `button is-primary m-3 ${isActive ? "ActiveOption":"Option"}`}>Celulares</NavLink>
+                <h3 className="title has-text-danger  has-text-centered p-5">Jordana Escalona Ecommerce</h3>
+            </Link>
+            <div className="is-flex is-align-items-center is-justify-content-center">
+                <NavLink to={`/`} className={({ isActive }) => `button is-primary m-3 ${isActive ? "button is-link m-3" : "button is-primary m-3"}`}>
+
+                    Home&nbsp; <FontAwesomeIcon icon={faHome} />
+                </NavLink>
+                <NavLink to={`/category/celular`} className={({ isActive }) => `button is-primary m-3 ${isActive ? "button is-link m-3" : "button is-primary m-3"}`}>Celulares</NavLink>
                 {/* <button className="button is-primary m-3">Celulares</button> */}
-                <NavLink to={`/category/tablet`} className={({isActive}) => `button is-primary m-3 ${isActive ? "ActiveOption":"Option"}`}>Tablets</NavLink>
-                <NavLink to={`/category/notebook`} className={({isActive}) => `button is-primary m-3 ${isActive ? "ActiveOption":"Option"}`}>Notebooks</NavLink>
+                <NavLink to={`/category/tablet`} className={({ isActive }) => `button is-primary m-3 ${isActive ? "button is-link m-3" : "button is-primary m-3"}`}>Tablets</NavLink>
+                <NavLink to={`/category/notebook`} className={({ isActive }) => `button is-primary m-3 ${isActive ? "button is-link m-3" : "button is-primary m-3"}`}>Notebooks</NavLink>
                 <CartWidget />
             </div>
-            
+
         </nav>
     );
 }

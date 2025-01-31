@@ -17,7 +17,14 @@ const Item = ({ id, name, img, price, stock }) => {
                 <p class="title is-4">{name}</p>
                 <br/>
                 <p class="subtitle is-6">Precio: ${price}</p>
-                <p class="subtitle is-6">Stock: {stock}</p>
+                
+                {
+                    stock > 0 ?(
+                        <p class="subtitle is-6">Stock: {stock}</p>
+                    ):(
+                        <p class="subtitle is-6 has-text-danger">No hay stock</p>
+                    )
+                }
                 <Link to={`/item/${id}`} className="button is-link">Ver detalle</Link>
                    
                 </div>
